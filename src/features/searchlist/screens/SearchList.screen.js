@@ -2,17 +2,17 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SearchBar } from "../components/SearchBar";
-import { SearchInfo } from "../components/Search-info.component"
+import { ShopInfo } from "../components/shop-info-card"
 
 
 export const SearchListScreen = () => {
   return (
     <SafeAreaView style={styles.statusbar}>
-      <View style={styles.container}>
+      <View style={styles.search}>
         <SearchBar />
       </View>
-      <View>
-        <SearchInfo />
+      <View style={styles.list}>
+        <ShopInfo />
       </View>
     </SafeAreaView>
   )
@@ -21,11 +21,15 @@ export const SearchListScreen = () => {
 
 
 const styles = StyleSheet.create({
-  statusbar: {
+  statusbsear: {
     flex: 1,
   },
-  container: {
+  search: {
     padding: 16
   },
+  list: {
+
+    padding: 16
+  }
 
 });
