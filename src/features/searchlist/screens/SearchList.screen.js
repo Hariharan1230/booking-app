@@ -11,7 +11,7 @@ export const SearchListScreen = () => {
       <View style={styles.container}>
         <SearchBar />
       </View>
-      <View style={styles.innerContainer}>
+      <View>
         <SearchInfo />
       </View>
     </SafeAreaView>
@@ -25,12 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    padding: 20
+    padding: 16
   },
-  innerContainer: {
-    flex: 1,
-    backgroundColor: "grey",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+
 });
