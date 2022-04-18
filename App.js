@@ -1,15 +1,15 @@
-import { View, Text } from "react-native";
+import React from 'react';
+import { StatusBar } from "react-native";
+import { SearchListScreen } from './src/features/searchlist/screens/SearchList.screen';
 
 export default function App() {
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
+    <>
+      <SearchListScreen />
+      <StatusBar style='auto' />
+    </>
   );
 }
+
+
