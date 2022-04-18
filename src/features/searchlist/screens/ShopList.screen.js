@@ -5,7 +5,7 @@ import { SearchBar } from "../components/SearchBar";
 import { ShopInfo } from "../components/shop-info-card"
 
 
-export const SearchListScreen = () => {
+export const ShopListScreen = () => {
   return (
     <SafeAreaView style={styles.statusbar}>
       <View style={styles.search}>
@@ -21,14 +21,16 @@ export const SearchListScreen = () => {
 
 
 const styles = StyleSheet.create({
-  statusbsear: {
+  statusbar: {
     flex: 1,
+    backgroundColor: '#f2f2f2'
   },
   search: {
-    padding: 16
+    padding: 16,
+    backgroundColor: 'white'
   },
   list: {
-
+    flex: 1,
     padding: 16
   }
 

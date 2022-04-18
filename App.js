@@ -1,12 +1,12 @@
 import React from 'react';
 import { StatusBar } from "react-native";
-import { SearchListScreen } from './src/features/searchlist/screens/SearchList.screen';
+import { ShopListScreen } from './src/features/searchlist/screens/ShopList.screen';
 
 export default function App() {
 
   return (
     <>
-      <SearchListScreen />
+      <ShopListScreen />
       <StatusBar style='auto' />
     </>
   );
