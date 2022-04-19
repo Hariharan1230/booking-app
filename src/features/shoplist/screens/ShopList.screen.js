@@ -2,8 +2,9 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SearchBar } from "../components/SearchBar";
-import { ShopInfo } from "../components/shop-info-card"
-
+import { ShopInfo } from "../components/shop-info-card";
+import Carousel from 'react-native-snap-carousel/src/carousel/Carousel';
+import { Offers } from "../components/Offers";
 
 export const ShopListScreen = () => {
   return (
@@ -11,7 +12,12 @@ export const ShopListScreen = () => {
       <View style={styles.search}>
         <SearchBar />
       </View>
+
+      <Offers />
+
+
       <View style={styles.list}>
+
         <ShopInfo />
       </View>
     </SafeAreaView>

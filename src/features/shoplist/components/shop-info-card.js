@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Card } from 'react-native-paper';
-
+import { Offers } from './Offers';
 export const ShopInfo = ({ shops = {} }) => {
   const {
     name = "Naturals",
@@ -13,10 +13,13 @@ export const ShopInfo = ({ shops = {} }) => {
     isClosedTemporarily,
   } = shops
   return (
-    <Card elevation={5} style={styles.card}>
-      <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
-      <Text style={styles.title}>{name}</Text>
-    </Card>
+    <>
+
+      <Card elevation={5} style={styles.card}>
+        <Card.Cover key={name} style={styles.cover} source={{ uri: photos[0] }} />
+        <Text style={styles.title}>{name}</Text>
+      </Card>
+    </>
   )
 }
 
