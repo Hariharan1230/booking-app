@@ -9,25 +9,21 @@
     "react-native-paper": "^4.12.0",
     "react-native-safe-area-context": "3.3.2",
     "react-native-snap-carousel": "^3.9.1",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "eslint": "^8.13.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0",
-    "eslint-plugin-react-native": "^4.0.0",
-    "prettier": "2.6.2"
+    "@react-native-community/eslint-config": "^3.0.1",
+    "eslint": "^7.16.0",
+    "prettier": "^2.6.2"
   },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "eslint . --ext .js"
   },
   "version": "1.0.0",
   "private": true,
