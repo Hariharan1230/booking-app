@@ -47,7 +47,12 @@ export const Offers = () => {
         horizontal
       >
         {images.map((e, index) => (
-          <TouchableHighlight key={e} onPress={({ data }) => trigger()}>
+          <TouchableHighlight
+            activeOpacity={0.8}
+            underlayColor="#f2f2f2"
+            key={e}
+            onPress={({ data }) => trigger()}
+          >
             <Image
               key={e}
               resizeMode="cover"
@@ -55,7 +60,7 @@ export const Offers = () => {
                 borderRadius: 25,
                 width: 300,
                 height: 218,
-                marginRight: 20,
+                marginRight: 20
               }}
               source={{ uri: e }}
             />
@@ -81,7 +86,7 @@ const styles = StyleSheet.create({
   wrap: {
     paddingHorizontal: 20,
     width: WIDTH,
-    height: HEIGHT * 0.25,
+    height: HEIGHT * 0.26,
   },
   wrapDot: {
     position: "absolute",

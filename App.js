@@ -1,19 +1,31 @@
 import React from "react";
+import {
+  useFonts as useOswald,
+  Oswald_400Regular,
+} from "@expo-google-fonts/oswald";
+import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+
 import { StatusBar } from "react-native";
 import { ShopListScreen } from "./src/features/shoplist/screens/ShopList.screen";
-import { SafeAreaView } from "react-native-safe-area-context";
-import styled from "styled-components/native";
-
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  background-color: #f2f2f2;
-`;
+import { ThemeProvider } from "styled-components/native";
+import { theme } from "./src/infrastructure/theme/index";
 
 export default function App() {
+  const [oswaldLoaded] = useOswald({
+    Oswald_400Regular,
+  });
+  const [latoLoaded] = useLato({
+    Lato_400Regular,
+  });
+  if (!oswaldLoaded || !latoLoaded) {
+    return null;
+  }
   return (
-    <SafeArea>
-      <StatusBar translucent backgroundColor="black" />
-      <ShopListScreen />
-    </SafeArea>
+    <>
+      <ThemeProvider theme={theme}>
+        <StatusBar translucent backgroundColor="black" />
+        <ShopListScreen />
+      </ThemeProvider>
+    </>
   );
 }
