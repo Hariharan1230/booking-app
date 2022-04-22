@@ -40,51 +40,58 @@ export const Offers = () => {
     }
   };
   return (
-    <View style={styles.wrap}>
-      <ScrollView
-        onScroll={({ nativeEvent }) => onchange(nativeEvent)}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-      >
-        {images.map((e, index) => (
-          <TouchableHighlight
-            activeOpacity={0.8}
-            underlayColor="#f2f2f2"
-            key={e}
-            onPress={({ data }) => trigger()}
-          >
-            <Image
-              key={e}
-              resizeMode="cover"
-              style={{
-                borderRadius: 25,
-                width: 300,
-                height: 218,
-                marginRight: 20
-              }}
-              source={{ uri: e }}
-            />
-          </TouchableHighlight>
-        ))}
-      </ScrollView>
-
-      <View style={styles.wrapDot}>
-        {images.map((e, index) => (
-          <Text
-            key={e}
-            style={imgActive === index ? styles.dotActive : styles.dot}
-          >
-            ●
-          </Text>
-        ))}
+    <>
+      <View style={{ backgroundColor: 'white' }}>
+        <Text style={{ paddingLeft: 20, fontSize: 20, fontWeight: 'bold' }}>
+          Offers
+        </Text>
       </View>
-    </View>
+      <View style={styles.wrap}>
+        <ScrollView
+          onScroll={({ nativeEvent }) => onchange(nativeEvent)}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+        >
+          {images.map((e, index) => (
+            <TouchableHighlight
+              activeOpacity={0.8}
+              underlayColor="#f2f2f2"
+              key={e}
+              onPress={({ data }) => trigger()}
+            >
+              <Image
+                key={e}
+                resizeMode="cover"
+                style={{
+                  borderRadius: 25,
+                  width: 300,
+                  height: 218,
+                  marginRight: 20
+                }}
+                source={{ uri: e }}
+              />
+            </TouchableHighlight>
+          ))}
+        </ScrollView>
+
+        <View style={styles.wrapDot}>
+          {images.map((e, index) => (
+            <Text
+              key={e}
+              style={imgActive === index ? styles.dotActive : styles.dot}
+            >
+              ●
+            </Text>
+          ))}
+        </View>
+      </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   wrap: {
-    paddingHorizontal: 20,
+    paddingRight: 32,
     width: WIDTH,
     height: HEIGHT * 0.26,
   },
