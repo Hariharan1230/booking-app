@@ -35,15 +35,12 @@ const TAB_ICON = {
   Settings: "settings",
 };
 
-const tabBarIcon =
-  (iconName) =>
-    ({ size, color }) =>
-      <Ionicons name={iconName} size={size} color={color} />;
-
-const screenOptions = ({ route }) => {
+const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
   return {
-    tabBarIcon: tabBarIcon(iconName),
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
   };
 };
 
@@ -62,7 +59,7 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <StatusBar translucent backgroundColor="black" />
         <NavigationContainer>
-          <Tab.Navigator screenOptions={screenOptions}>
+          <Tab.Navigator screenOptions={createScreenOptions}>
             <Tab.Screen
               name="Home"
               component={ShopListScreen}
