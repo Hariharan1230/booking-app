@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -14,6 +14,7 @@ import { ShopListScreen } from "./src/features/shoplist/screens/ShopList.screen"
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme/index";
 import { SafeArea } from "./src/components/utility/safe-area.component";
+import { ShopsContextProvider } from "./src/services/shopDetails/shops.context";
 
 const MapScreen = () => (
   <SafeArea>
@@ -58,25 +59,27 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <StatusBar translucent backgroundColor="black" />
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={createScreenOptions}>
-            <Tab.Screen
-              name="Home"
-              component={ShopListScreen}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Map"
-              component={MapScreen}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Settings"
-              component={SettingsScreen}
-              options={{ headerShown: false }}
-            />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <ShopsContextProvider>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen
+                name="Home"
+                component={ShopListScreen}
+                options={{ headerShown: false }}
+              />
+              <Tab.Screen
+                name="Map"
+                component={MapScreen}
+                options={{ headerShown: false }}
+              />
+              <Tab.Screen
+                name="Settings"
+                component={SettingsScreen}
+                options={{ headerShown: false }}
+              />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </ShopsContextProvider>
       </ThemeProvider>
     </>
   );
