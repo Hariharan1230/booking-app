@@ -15,13 +15,13 @@ import {
 
 export const ShopInfo = ({ shops = {} }) => {
   const {
-    name = "Naturals",
+    name,
     icon,
-    photos = ["https://image3.mouthshut.com/images/imagesp/925106109s.jpeg"],
-    address = "100 b west street",
+    photos,
+    vicinity,
     openingHours,
-    isOpenNow = true,
-    rating = 4,
+    isOpenNow,
+    rating,
     isClosedTemporarily,
   } = shops;
 
@@ -41,7 +41,7 @@ export const ShopInfo = ({ shops = {} }) => {
             {isOpenNow && <SvgXml xml={isopen} width={22} height={22} />}
           </SectionEnd>
         </Section>
-        <Text variant="caption">{address}</Text>
+        <Text variant="caption">{vicinity}</Text>
       </Info>
     </StyledCard>
   );

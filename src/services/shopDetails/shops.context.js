@@ -5,10 +5,33 @@ import { shopDetailsRequest, shopDetailsEdit } from "./shops.services";
 export const ShopsContext = createContext();
 
 export const ShopsContextProvider = ({ children }) => {
+  const [shop, setShop] = useState([]);
+  const [isLoading, setisLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const retrieveData = () => {
+    setisLoading(true);
+    setTimeout(() => {
+      shopDetailsRequest()
+        .then(shopDetailsEdit)
+        .then((results) => {
+          setisLoading(false);
+          setShop(results);
+        })
+        .catch((err) => {
+          setError(err);
+        });
+    }, 1000);
+  };
+  useEffect(() => {
+    retrieveData();
+  }, []);
   return (
     <ShopsContext.Provider
       value={{
-        shop: [1, 2, 3],
+        shop,
+        isLoading,
+        error,
       }}
     >
       {children}

@@ -13,6 +13,8 @@ export const shopDetailsRequest = (location = "37.7749295,-122.4194155") => {
 
 export const shopDetailsEdit = ({ results = [] }) => {
   const mappedResults = results.map((shop) => {
+    shop.photos = ["https://lh3.googleusercontent.com/p/AF1QipO5Np3DMuKW_VCZx7k_9I6JoPNLRlxq7sg3nN56=w1080-h608-p-no-v0"];
+
     return {
       ...shop,
       isOpenNow: shop.opening_hours && shop.opening_hours.open_now,
