@@ -3,8 +3,6 @@ import { Dimensions, Text, View } from "react-native";
 import MapView, { Callout, Circle, Marker } from "react-native-maps";
 import styled from "styled-components/native";
 import { SafeArea } from "../../components/utility/safe-area.component";
-import { Foundation } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 
 const StyledMapView = styled(MapView)`
   width: ${Math.floor(Dimensions.get("window").width)}px;
