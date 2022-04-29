@@ -31,8 +31,7 @@ export const Offers = () => {
   onchange = (nativeEvent) => {
     if (nativeEvent) {
       const slide = Math.floor(
-        (nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width) *
-        1.2
+        (nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width) * 1.5
       );
       if (slide != imgActive) {
         setimgActive(slide);
@@ -51,6 +50,7 @@ export const Offers = () => {
           onScroll={({ nativeEvent }) => onchange(nativeEvent)}
           showsHorizontalScrollIndicator={false}
           horizontal
+          style={styles.wrap}
         >
           {images.map((e, index) => (
             <TouchableHighlight
@@ -64,8 +64,8 @@ export const Offers = () => {
                 resizeMode="cover"
                 style={{
                   borderRadius: 25,
-                  width: 300,
-                  height: 218,
+                  width: WIDTH / 1.5,
+                  height: HEIGHT * 0.28,
                   marginRight: 20
                 }}
                 source={{ uri: e }}
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   wrap: {
     paddingRight: 32,
     width: WIDTH,
-    height: HEIGHT * 0.26,
+    height: HEIGHT * 0.28,
   },
   wrapDot: {
     position: "absolute",
