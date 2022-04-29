@@ -2,6 +2,8 @@ import React from "react";
 import { Dimensions, Text, View } from "react-native";
 import MapView, { Callout, Circle, Marker } from "react-native-maps";
 import styled from "styled-components/native";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+
 import { SafeArea } from "../../components/utility/safe-area.component";
 
 const StyledMapView = styled(MapView)`
@@ -17,6 +19,28 @@ const MapContainer = styled.View`
 
 export const MapScreen = () => (
   <SafeArea>
+    <GooglePlacesAutocomplete
+      placeholder="Search"
+      onPress={(data, details = null) => {
+        // 'details' is provided when fetchDetails = true
+        console.log(data, details);
+      }}
+      query={{
+        key: "AIzaSyAgfEmSyfZDaflLKr1Lq9NcnuK_wB3mhD0",
+        language: "en",
+      }}
+      onFail={(error) => console.error(error)}
+      styles={{
+        container: {
+          flex: 0,
+          position: "absolute",
+          width: "100%",
+          zIndex: 1,
+          marginTop: 50,
+        },
+        listView: { backgroundColor: "white" }
+      }}
+    />
     <MapContainer>
       <StyledMapView
         region={{
