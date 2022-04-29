@@ -12,7 +12,7 @@ const HomeStack = createStackNavigator();
 export const HomeNavigator = () => {
   return (
     <HomeStack.Navigator
-      screenOptions={{ ...TransitionPresets.SlideFromRightIOS }}
+      screenOptions={{ ...TransitionPresets.RevealFromBottomAndroid }}
     >
       <HomeStack.Screen
         name="home"

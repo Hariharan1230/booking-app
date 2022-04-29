@@ -8,7 +8,7 @@ export const ShopDetailScreen = ({ route }) => {
   return (
     <SafeArea>
       <ShopInfo shops={shop} />
-      <Text>Shop details will be displayed here</Text>
+      <Text>{shop.name}</Text>
     </SafeArea>
   );
 };

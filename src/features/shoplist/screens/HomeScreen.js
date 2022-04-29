@@ -37,6 +37,23 @@ export const HomeScreen = ({ navigation }) => {
   const filteredshop = shop.filter((shops) => {
     return shops.name.toLowerCase().includes(searchQuery.toLowerCase());
   });
+  const OffersList = () => (
+    <Spacer position="bottom" size="large">
+      <Offers />
+    </Spacer>
+  )
+  const renderItem = ({ item, index }) => {
+    return (
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => navigation.navigate("Shop Details", { shop: item })}
+      >
+        <Spacer position="bottom" size="large">
+          <ShopInfo shops={item} />
+        </Spacer>
+      </TouchableOpacity>
+    );
+  };
   return (
     <SafeArea>
       {isLoading && (
@@ -49,25 +66,8 @@ export const HomeScreen = ({ navigation }) => {
       </SearchBarView>
       <ShopList
         data={filteredshop}
-        ListHeaderComponent={
-          <Spacer position="bottom" size="large">
-            <Offers />
-          </Spacer>
-        }
-        renderItem={({ item, index }) => {
-          return (
-            <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={() =>
-                navigation.navigate("Shop Details", { shop: item })
-              }
-            >
-              <Spacer position="bottom" size="large">
-                <ShopInfo shops={item} />
-              </Spacer>
-            </TouchableOpacity>
-          );
-        }}
+        ListHeaderComponent={OffersList}
+        renderItem={renderItem}
         keyExtractor={(item) => item.name}
       />
     </SafeArea>

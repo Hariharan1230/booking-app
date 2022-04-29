@@ -6,12 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { HomeNavigator } from "./home.navigator";
 import { SafeArea } from "../../components/utility/safe-area.component";
-
-const MapScreen = () => (
-  <SafeArea>
-    <Text>Map</Text>
-  </SafeArea>
-);
+import { MapScreen } from "../../features/map/map.screen";
 
 const SettingsScreen = () => (
   <SafeArea>
