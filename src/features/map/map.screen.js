@@ -19,7 +19,7 @@ const MapContainer = styled.View`
 
 export const MapScreen = () => (
   <SafeArea>
-    <GooglePlacesAutocomplete
+    {/* <GooglePlacesAutocomplete
       placeholder="Search"
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
@@ -40,7 +40,7 @@ export const MapScreen = () => (
         },
         listView: { backgroundColor: "white" }
       }}
-    />
+    /> */}
     <MapContainer>
       <StyledMapView
         region={{
