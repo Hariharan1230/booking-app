@@ -12,6 +12,7 @@ import {
   Section,
   SectionEnd,
 } from "./shop-info-card.styles";
+import { Favourite } from "../../../components/favourites/favourites.component";
 
 export const ShopInfo = ({ shops = {} }) => {
   const {
@@ -28,6 +29,7 @@ export const ShopInfo = ({ shops = {} }) => {
   const ratingArray = Array.from(new Array(Math.round(rating)));
   return (
     <StyledCard elevation={5}>
+      <Favourite shop={shops} />
       <CardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <Text variant="label">{name}</Text>

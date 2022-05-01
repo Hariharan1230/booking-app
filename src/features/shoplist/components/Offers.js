@@ -40,7 +40,7 @@ export const Offers = () => {
   };
   return (
     <>
-      <View style={{ backgroundColor: 'white' }}>
+      <View>
         <Text style={{ paddingLeft: 20, fontSize: 20, fontWeight: 'bold' }}>
           Offers
         </Text>
