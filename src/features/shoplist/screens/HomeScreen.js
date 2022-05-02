@@ -6,9 +6,11 @@ import { ActivityIndicator, Colors } from "react-native-paper";
 import { SearchBar } from "../components/SearchBar";
 import { ShopInfo } from "../components/shop-info-card.component";
 import { Offers } from "../components/Offers";
-import { Spacer } from "../../../components/spacer/spacer";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
 import { SafeArea } from "../../.././components/utility/safe-area.component";
 import { ShopsContext } from "../../../services/shopDetails/shops.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const SearchBarView = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -25,14 +27,16 @@ const Loading = styled(ActivityIndicator)`
 `;
 const LoadingContainer = styled.View`
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
 `;
 
 export const HomeScreen = ({ navigation }) => {
   const { shop, isLoading, error } = useContext(ShopsContext);
+  const { favourites } = useContext(FavouritesContext)
   const [searchQuery, setSearchQuery] = useState("");
   const onChangeSearch = (query) => setSearchQuery(query);
+  const [isToggled, setIsToggled] = useState(false);
 
   const filteredshop = shop.filter((shops) => {
     return shops.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -41,7 +45,7 @@ export const HomeScreen = ({ navigation }) => {
     <Spacer position="bottom" size="large">
       <Offers />
     </Spacer>
-  )
+  );
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
@@ -62,8 +66,18 @@ export const HomeScreen = ({ navigation }) => {
         </LoadingContainer>
       )}
       <SearchBarView>
-        <SearchBar searchinfo={onChangeSearch} />
+        <SearchBar
+          isFavToggled={isToggled}
+          onFavToggle={() => setIsToggled(!isToggled)}
+          searchinfo={onChangeSearch}
+        />
       </SearchBarView>
+      {isToggled && (
+        <FavouritesBar
+          favourites={favourites}
+          onNavigate={navigation.navigate}
+        />
+      )}
       <ShopList
         data={filteredshop}
         ListHeaderComponent={OffersList}

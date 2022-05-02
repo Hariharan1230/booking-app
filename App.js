@@ -10,6 +10,7 @@ import { Navigation } from "./src/infrastructure/navigation";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme/index";
 import { ShopsContextProvider } from "./src/services/shopDetails/shops.context";
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -24,10 +25,12 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <StatusBar translucent backgroundColor="black" />
-        <ShopsContextProvider>
-          <Navigation />
-        </ShopsContextProvider>
+        <FavouritesContextProvider>
+          <StatusBar translucent backgroundColor="black" />
+          <ShopsContextProvider>
+            <Navigation />
+          </ShopsContextProvider>
+        </FavouritesContextProvider>
       </ThemeProvider>
     </>
   );
