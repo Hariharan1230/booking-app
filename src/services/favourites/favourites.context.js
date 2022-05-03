@@ -48,6 +48,7 @@ export const FavouritesContextProvider = ({ children }) => {
     <FavouritesContext.Provider
       value={{
         favourites,
+        setFavourites,
         addToFavourites: add,
         removeFromFavourites: remove,
       }}

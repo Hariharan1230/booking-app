@@ -12,6 +12,7 @@ import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme/index";
 import { ShopsContextProvider } from "./src/services/shopDetails/shops.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCTbVpib5QnpgNZp3PVWF3sOIYGR5nFCXw",
@@ -37,12 +38,14 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavouritesContextProvider>
-          <StatusBar translucent backgroundColor="black" />
-          <ShopsContextProvider>
-            <Navigation />
-          </ShopsContextProvider>
-        </FavouritesContextProvider>
+        <AuthenticationContextProvider>
+          <FavouritesContextProvider>
+            <StatusBar translucent backgroundColor="black" />
+            <ShopsContextProvider>
+              <Navigation />
+            </ShopsContextProvider>
+          </FavouritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
     </>
   );

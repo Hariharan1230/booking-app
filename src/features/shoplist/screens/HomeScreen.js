@@ -33,7 +33,7 @@ const LoadingContainer = styled.View`
 
 export const HomeScreen = ({ navigation }) => {
   const { shop, isLoading, error } = useContext(ShopsContext);
-  const { favourites } = useContext(FavouritesContext)
+  const { favourites } = useContext(FavouritesContext);
   const [searchQuery, setSearchQuery] = useState("");
   const onChangeSearch = (query) => setSearchQuery(query);
   const [isToggled, setIsToggled] = useState(false);
