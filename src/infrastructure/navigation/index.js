@@ -12,7 +12,7 @@ export const Navigation = () => {
   return (
     <SafeArea>
       <NavigationContainer>
-        {isAuthenticated ? <AccountNavigator /> : <AppNavigator />}
+        {isAuthenticated ? <AppNavigator /> : <AccountNavigator />}
       </NavigationContainer>
     </SafeArea>
   );
