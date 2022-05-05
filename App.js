@@ -5,7 +5,9 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { StatusBar } from "react-native";
-import { initializeApp } from "firebase/app";
+import { initializeApp, FirebaseApp, getApps, getApp } from "firebase/app";
+import { Auth, getAuth, initializeAuth } from "firebase/auth";
+import { getReactNativePersistence } from "firebase/auth/react-native";
 
 import { Navigation } from "./src/infrastructure/navigation";
 import { ThemeProvider } from "styled-components/native";
@@ -13,6 +15,7 @@ import { theme } from "./src/infrastructure/theme/index";
 import { ShopsContextProvider } from "./src/services/shopDetails/shops.context";
 import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCTbVpib5QnpgNZp3PVWF3sOIYGR5nFCXw",
@@ -23,7 +26,17 @@ const firebaseConfig = {
   appId: "1:378046707721:web:584beaac52af22bed960d8",
 };
 
-initializeApp(firebaseConfig);
+let firebaseApp = FirebaseApp;
+let fireAuth = Auth;
+if (getApps().length < 1) {
+  firebaseApp = initializeApp(firebaseConfig);
+  fireAuth = initializeAuth(firebaseApp, {
+    persistence: getReactNativePersistence(AsyncStorage),
+  });
+} else {
+  firebaseApp = getApp();
+  fireAuth = getAuth();
+}
 
 export default function App() {
   const [oswaldLoaded] = useOswald({

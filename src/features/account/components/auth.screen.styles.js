@@ -23,7 +23,7 @@ export const BgOpacity = styled.View`
   background-color: rgba(178, 226, 226, 0.2);
 `;
 
-export const Containter = styled.View`
+export const Container = styled.View`
   background-color: rgba(178, 226, 226, 0.5);
   padding: ${(props) => props.theme.space[5]};
   margin-top: ${(props) => props.theme.space[2]};

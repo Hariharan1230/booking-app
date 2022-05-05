@@ -3,7 +3,7 @@ import React from "react";
 import {
   Background,
   BgOpacity,
-  Containter,
+  Container,
   AuthButton,
   Title,
 } from "../components/auth.screen.styles";
@@ -14,7 +14,7 @@ export const AccountScreen = ({ navigation }) => {
     <Background>
       <BgOpacity />
       <Title>PSBAPP</Title>
-      <Containter>
+      <Container>
         <AuthButton
           icon="lock-open-outline"
           mode="contained"
@@ -31,7 +31,7 @@ export const AccountScreen = ({ navigation }) => {
             Register
           </AuthButton>
         </Spacer>
-      </Containter>
+      </Container>
     </Background>
   );
 };

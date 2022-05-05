@@ -6,7 +6,7 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 import {
   Background,
   BgOpacity,
-  Containter,
+  Container,
   AuthButton,
   AuthInput,
   ErrorContainer,
@@ -19,7 +19,7 @@ export const LoginScreen = ({ navigation }) => {
   return (
     <Background>
       <BgOpacity />
-      <Containter>
+      <Container>
         <AuthInput
           label="E-mail"
           returnKeyType="next"
@@ -28,7 +28,7 @@ export const LoginScreen = ({ navigation }) => {
           textContentType="emailAddress"
           keyBoardType="email-address"
           autoCapitalize="none"
-          onTextChange={(input) => setEmail(input)}
+          onChangeText={(u) => setEmail(u)}
         />
         <Spacer position="top" size="large">
           <AuthInput
@@ -38,7 +38,7 @@ export const LoginScreen = ({ navigation }) => {
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
-            onTextChange={(input) => setPassword(input)}
+            onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
         <ErrorContainer>
@@ -57,7 +57,7 @@ export const LoginScreen = ({ navigation }) => {
             Login
           </AuthButton>
         </Spacer>
-      </Containter>
+      </Container>
       <Spacer size="large">
         <AuthButton
           icon="backspace-outline"
