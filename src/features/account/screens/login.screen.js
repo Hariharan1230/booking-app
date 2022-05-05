@@ -9,12 +9,13 @@ import {
   Containter,
   AuthButton,
   AuthInput,
+  ErrorContainer,
 } from "../components/auth.screen.styles";
 
-export const LoginScreen = () => {
+export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, error } = useContext(AuthenticationContext)
+  const { onLogin, error } = useContext(AuthenticationContext);
   return (
     <Background>
       <BgOpacity />
@@ -40,11 +41,13 @@ export const LoginScreen = () => {
             onTextChange={(input) => setPassword(input)}
           />
         </Spacer>
-        {error && (
-          <Spacer size="large">
-            <Text variant="error">{error}</Text>
-          </Spacer>
-        )}
+        <ErrorContainer>
+          {error && (
+            <Spacer size="large">
+              <Text variant="error">{error}</Text>
+            </Spacer>
+          )}
+        </ErrorContainer>
 
         <Spacer position="top" size="large">
           <AuthButton
@@ -55,6 +58,14 @@ export const LoginScreen = () => {
           </AuthButton>
         </Spacer>
       </Containter>
+      <Spacer size="large">
+        <AuthButton
+          icon="backspace-outline"
+          onPress={() => navigation.goBack()}
+        >
+          Back
+        </AuthButton>
+      </Spacer>
     </Background>
   );
 };
