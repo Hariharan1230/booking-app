@@ -12,8 +12,6 @@ import { getReactNativePersistence } from "firebase/auth/react-native";
 import { Navigation } from "./src/infrastructure/navigation";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme/index";
-import { ShopsContextProvider } from "./src/services/shopDetails/shops.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -52,12 +50,8 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <AuthenticationContextProvider>
-          <FavouritesContextProvider>
-            <StatusBar translucent backgroundColor="black" />
-            <ShopsContextProvider>
-              <Navigation />
-            </ShopsContextProvider>
-          </FavouritesContextProvider>
+          <StatusBar translucent backgroundColor="black" />
+          <Navigation />
         </AuthenticationContextProvider>
       </ThemeProvider>
     </>

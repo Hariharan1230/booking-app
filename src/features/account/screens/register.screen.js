@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import { ActivityIndicator, Colors } from "react-native-paper";
+
 import {
   Background,
   BgOpacity,
@@ -10,12 +12,14 @@ import {
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { colors } from "../../../infrastructure/theme/colors";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
-  const { onRegister, error } = useContext(AuthenticationContext);
+  const { onRegister, isLoading, error } = useContext(AuthenticationContext);
+
   return (
     <Background>
       <BgOpacity />
@@ -54,17 +58,24 @@ export const RegisterScreen = ({ navigation }) => {
           </ErrorContainer>
         )}
         <Spacer size="large">
-          <AuthButton
-            icon="account-box-multiple-outline"
-            mode="contained"
-            onPress={() => onRegister(email, password, repeatedPassword)}
-          >
-            Register
-          </AuthButton>
+          {!isLoading ? (
+            <AuthButton
+              icon="account-box-multiple-outline"
+              mode="contained"
+              onPress={() => onRegister(email, password, repeatedPassword)}
+            >
+              Register
+            </AuthButton>
+          ) : (
+            <ActivityIndicator animating={true} color={colors.ui.secondary} />
+          )}
         </Spacer>
       </Container>
       <Spacer size="large">
-        <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+        <AuthButton
+          icon="backspace-outline"
+          onPress={() => navigation.goBack()}
+        >
           Back
         </AuthButton>
       </Spacer>

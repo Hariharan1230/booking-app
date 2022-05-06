@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text } from "react-native";
+import { Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { HomeNavigator } from "./home.navigator";
 import { SafeArea } from "../../components/utility/safe-area.component";
 import { MapScreen } from "../../features/map/map.screen";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
+import { ShopsContextProvider } from "../../services/shopDetails/shops.context";
+import { FavouritesContextProvider } from "../../services/favourites/favourites.context"
 
-const SettingsScreen = () => (
-  <Text>Settings</Text>
-
-);
+const SettingsScreen = () => {
+  const { onLogout, isLoading, error } = useContext(AuthenticationContext);
+  return (
+    <SafeArea>
+      <Button title="logout" onPress={() => onLogout()} />
+    </SafeArea>
+  );
+};
 
 const Tab = createBottomTabNavigator();
 
@@ -30,21 +37,25 @@ const createScreenOptions = ({ route }) => {
 };
 
 export const AppNavigator = () => (
-  <Tab.Navigator screenOptions={createScreenOptions}>
-    <Tab.Screen
-      name="Home"
-      component={HomeNavigator}
-      options={{ headerShown: false }}
-    />
-    <Tab.Screen
-      name="Map"
-      component={MapScreen}
-      options={{ headerShown: false }}
-    />
-    <Tab.Screen
-      name="Settings"
-      component={SettingsScreen}
-      options={{ headerShown: false }}
-    />
-  </Tab.Navigator>
+  <FavouritesContextProvider>
+    <ShopsContextProvider>
+      <Tab.Navigator screenOptions={createScreenOptions}>
+        <Tab.Screen
+          name="Home"
+          component={HomeNavigator}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Map"
+          component={MapScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{ headerShown: false }}
+        />
+      </Tab.Navigator>
+    </ShopsContextProvider>
+  </FavouritesContextProvider>
 );
