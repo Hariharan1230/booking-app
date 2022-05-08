@@ -21,7 +21,7 @@ export const ShopsContextProvider = ({ children }) => {
         .catch((err) => {
           setError(err);
         });
-    }, 100);
+    }, 1000);
   };
   useEffect(() => {
     retrieveData();

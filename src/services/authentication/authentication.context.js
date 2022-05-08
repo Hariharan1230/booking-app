@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-
+import { getFirestore, setDoc, doc } from "firebase/firestore";
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
@@ -14,6 +14,8 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
   const auth = getAuth();
+  const firestore = getFirestore();
+
   useEffect(() => {
     return onAuthStateChanged(auth, setUsers);
   }, []);
@@ -29,7 +31,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       );
       const user = userCredential.user;
       setUsers(user);
@@ -76,7 +78,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   };
 
-  const onRegister = async (email, password, repeatedPassword) => {
+  const onRegister = async (email, password, repeatedPassword, phoneNumber) => {
     setIsLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -87,6 +89,11 @@ export const AuthenticationContextProvider = ({ children }) => {
       const user = userCredential.user;
       setUsers(user);
       setIsLoading(false);
+      await setDoc(doc(firestore, "users", user.uid), {
+        employment: "plumber",
+        outfitColor: "red",
+        specialAttack: "fireball"
+      });
     } catch (e) {
       const er = e.code;
       console.log(er);

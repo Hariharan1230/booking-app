@@ -18,6 +18,7 @@ export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const { onRegister, isLoading, error } = useContext(AuthenticationContext);
 
   return (
@@ -32,6 +33,16 @@ export const RegisterScreen = ({ navigation }) => {
           autoCapitalize="none"
           onChangeText={(u) => setEmail(u)}
         />
+        <Spacer size="large">
+          <AuthInput
+            label="Contact Number"
+            value={phoneNumber}
+            textContentType="telephoneNumber"
+            keyboardType="number-pad"
+            autoCapitalize="none"
+            onChangeText={(u) => setPhoneNumber(u)}
+          />
+        </Spacer>
         <Spacer size="large">
           <AuthInput
             label="Password"
@@ -62,7 +73,9 @@ export const RegisterScreen = ({ navigation }) => {
             <AuthButton
               icon="account-box-multiple-outline"
               mode="contained"
-              onPress={() => onRegister(email, password, repeatedPassword)}
+              onPress={() =>
+                onRegister(email, password, repeatedPassword, phoneNumber)
+              }
             >
               Register
             </AuthButton>
