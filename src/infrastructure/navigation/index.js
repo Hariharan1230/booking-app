@@ -8,7 +8,7 @@ import { AuthenticationContext } from "../../services/authentication/authenticat
 import { AccountNavigator } from "./account.navigator";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
-export const Navigation = ({ u }) => {
+export const Navigation = () => {
   const { isAuthenticated } = useContext(AuthenticationContext);
   const [isLoading, setIsLoading] = useState(true);
   const Loading = styled(ActivityIndicator)`
