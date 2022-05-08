@@ -1,26 +1,23 @@
 import React, { useContext, useState } from "react";
-import { FlatList, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
+import { ShopList } from "../components/shop-list.styles";
 import { SearchBar } from "../components/SearchBar";
 import { ShopInfo } from "../components/shop-info-card.component";
 import { Offers } from "../components/Offers";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
-import { SafeArea } from "../../.././components/utility/safe-area.component";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 import { ShopsContext } from "../../../services/shopDetails/shops.context";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 const SearchBarView = styled.View`
   padding: ${(props) => props.theme.space[3]};
   background-color: ${(props) => props.theme.colors.ui.primary};
 `;
-const ShopList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -78,12 +75,14 @@ export const HomeScreen = ({ navigation }) => {
           onNavigate={navigation.navigate}
         />
       )}
-      <ShopList
-        data={filteredshop}
-        ListHeaderComponent={OffersList}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.name}
-      />
+      <FadeInView>
+        <ShopList
+          data={filteredshop}
+          ListHeaderComponent={OffersList}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.name}
+        />
+      </FadeInView>
     </SafeArea>
   );
 };

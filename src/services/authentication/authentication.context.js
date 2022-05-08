@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -14,12 +14,15 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [users, setUsers] = useState(null);
   const [error, setError] = useState(null);
   const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUsers(user);
-      setIsLoading(false);
-    }
-  });
+  useEffect(() => {
+    return onAuthStateChanged(auth, setUsers);
+  }, []);
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     setUsers(user);
+  //     setIsLoading(false);
+  //   }
+  // });
   const onLogin = async (email, password) => {
     setIsLoading(true);
     try {

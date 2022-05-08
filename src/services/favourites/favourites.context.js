@@ -49,7 +49,6 @@ export const FavouritesContextProvider = ({ children }) => {
     if (users) {
       storeFavourites(favourites, users.uid);
     }
-    ;
   }, [favourites, users]);
 
   return (

@@ -30,7 +30,7 @@ export const LoginScreen = ({ navigation }) => {
           textContentType="emailAddress"
           keyBoardType="email-address"
           autoCapitalize="none"
-          onChangeText={(u) => setEmail(u)}
+          onChangeText={(u) => setEmail(u.trim())}
         />
         <Spacer position="top" size="large">
           <AuthInput
