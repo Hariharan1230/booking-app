@@ -1,11 +1,11 @@
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
+import { Dimensions, ScrollView } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 
 import { colors } from "../../../infrastructure/theme/colors";
 
 const WIDTH = Math.floor(Dimensions.get("screen").width);
-//const HEIGHT = Math.floor(Dimensions.get("screen").height);
+const HEIGHT = Math.floor(Dimensions.get("screen").height);
 
 export const Background = styled.ImageBackground.attrs({
   source: require("../../../../assets/bgimg1.jpg"),
@@ -27,6 +27,7 @@ export const Container = styled.View`
   background-color: rgba(178, 226, 226, 0.5);
   padding: ${(props) => props.theme.space[5]};
   margin-top: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[6]};
 `;
 
 export const AuthButton = styled(Button).attrs({

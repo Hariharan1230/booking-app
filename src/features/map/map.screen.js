@@ -28,6 +28,14 @@ export const MapScreen = () => (
         }}
       >
         <Marker
+          draggable
+          coordinate={{
+            latitude: 8.69659071711335,
+            longitude: 77.74215476000238,
+          }}
+          onDragEnd={(e) => console.log(e.nativeEvent.coordinate)}
+        />
+        <Marker
           coordinate={{
             latitude: 8.69659071711335,
             longitude: 77.74215476000238,

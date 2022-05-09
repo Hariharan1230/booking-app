@@ -31,7 +31,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
-        password,
+        password
       );
       const user = userCredential.user;
       setUsers(user);
@@ -78,7 +78,16 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   };
 
-  const onRegister = async (email, password, repeatedPassword, phoneNumber) => {
+  const onRegister = async (
+    email,
+    password,
+    repeatedPassword,
+    name,
+    address,
+    city,
+    state,
+    phoneNumber
+  ) => {
     setIsLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -90,9 +99,12 @@ export const AuthenticationContextProvider = ({ children }) => {
       setUsers(user);
       setIsLoading(false);
       await setDoc(doc(firestore, "users", user.uid), {
-        employment: "plumber",
-        outfitColor: "red",
-        specialAttack: "fireball"
+        email: email,
+        name: name,
+        address: address,
+        city: city,
+        state: state,
+        phoneNumber: phoneNumber,
       });
     } catch (e) {
       const er = e.code;
