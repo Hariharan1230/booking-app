@@ -18,31 +18,6 @@ const MapContainer = styled.View`
 
 export const MapScreen = () => (
   <SafeArea>
-<<<<<<< HEAD
-    {/* <GooglePlacesAutocomplete
-      placeholder="Search"
-      onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        console.log(data, details);
-      }}
-      query={{
-        key: "AIzaSyAgfEmSyfZDaflLKr1Lq9NcnuK_wB3mhD0",
-        language: "en",
-      }}
-      onFail={(error) => console.error(error)}
-      styles={{
-        container: {
-          flex: 0,
-          position: "absolute",
-          width: "100%",
-          zIndex: 1,
-          marginTop: 50,
-        },
-        listView: { backgroundColor: "white" }
-      }}
-    /> */}
-=======
->>>>>>> b34d43d4dde2edbff096dc47305a735532ff1f7c
     <MapContainer>
       <StyledMapView
         region={{

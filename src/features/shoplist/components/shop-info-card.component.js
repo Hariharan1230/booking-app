@@ -30,11 +30,7 @@ export const ShopInfo = ({ shops = {} }) => {
   return (
     <StyledCard elevation={5}>
       <Favourite shop={shops} />
-<<<<<<< HEAD
-      <CardCover key={name} source={{ uri: photos[0] }} />
-=======
       <CardCover key={name} source={{ uri: photos[0] }} resizeMode="cover" />
->>>>>>> b34d43d4dde2edbff096dc47305a735532ff1f7c
       <Info>
         <Text variant="label">{name}</Text>
         <Section>

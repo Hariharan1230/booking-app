@@ -12,10 +12,6 @@ import { getReactNativePersistence } from "firebase/auth/react-native";
 import { Navigation } from "./src/infrastructure/navigation";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme/index";
-<<<<<<< HEAD
-import { ShopsContextProvider } from "./src/services/shopDetails/shops.context";
-import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
-=======
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -39,7 +35,6 @@ if (getApps().length < 1) {
   firebaseApp = getApp();
   fireAuth = getAuth();
 }
->>>>>>> b34d43d4dde2edbff096dc47305a735532ff1f7c
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -54,19 +49,10 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-<<<<<<< HEAD
-        <StatusBar translucent backgroundColor="black" />
-        <FavouritesContextProvider>
-          <ShopsContextProvider>
-            <Navigation />
-          </ShopsContextProvider>
-        </FavouritesContextProvider>
-=======
         <AuthenticationContextProvider>
           <StatusBar translucent backgroundColor="black" />
           <Navigation />
         </AuthenticationContextProvider>
->>>>>>> b34d43d4dde2edbff096dc47305a735532ff1f7c
       </ThemeProvider>
     </>
   );

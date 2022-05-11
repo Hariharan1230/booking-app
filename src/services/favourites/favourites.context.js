@@ -1,19 +1,11 @@
-<<<<<<< HEAD
-import React, { createContext, useState } from "react";
-=======
 import React, { createContext, useContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { AuthenticationContext } from "../authentication/authentication.context";
->>>>>>> b34d43d4dde2edbff096dc47305a735532ff1f7c
 
 export const FavouritesContext = createContext();
 
 export const FavouritesContextProvider = ({ children }) => {
-<<<<<<< HEAD
-  const [favourites, setFavourites] = useState([]);
-
-=======
   const { users } = useContext(AuthenticationContext);
   const [favourites, setFavourites] = useState([]);
 
@@ -37,7 +29,6 @@ export const FavouritesContextProvider = ({ children }) => {
     }
   };
 
->>>>>>> b34d43d4dde2edbff096dc47305a735532ff1f7c
   const add = (shop) => {
     setFavourites([...favourites, shop]);
   };
@@ -47,8 +38,6 @@ export const FavouritesContextProvider = ({ children }) => {
 
     setFavourites(newFavourites);
   };
-<<<<<<< HEAD
-=======
 
   useEffect(() => {
     if (users) {
@@ -62,15 +51,11 @@ export const FavouritesContextProvider = ({ children }) => {
     }
   }, [favourites, users]);
 
->>>>>>> b34d43d4dde2edbff096dc47305a735532ff1f7c
   return (
     <FavouritesContext.Provider
       value={{
         favourites,
-<<<<<<< HEAD
-=======
         setFavourites,
->>>>>>> b34d43d4dde2edbff096dc47305a735532ff1f7c
         addToFavourites: add,
         removeFromFavourites: remove,
       }}
