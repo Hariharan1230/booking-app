@@ -2,8 +2,6 @@ import React, { useState, useContext } from "react";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { ScrollView, View } from "react-native";
 import {
-  OuterContainer,
-  ScrollViews,
   Background,
   BgOpacity,
   Container,
@@ -85,7 +83,7 @@ export const RegisterScreen = ({ navigation }) => {
             <AuthInput
               label="E-mail"
               value={email}
-              maxLength={25}
+              maxLength={40}
               textContentType="emailAddress"
               keyboardType="email-address"
               autoCapitalize="none"
