@@ -109,6 +109,21 @@ export const AuthenticationContextProvider = ({ children }) => {
     } catch (e) {
       const er = e.code;
       console.log(er);
+      if (name.length < 4) {
+        setIsLoading(false);
+        setError("Enter a Proper Name");
+        return;
+      }
+      if (phoneNumber.length < 10) {
+        setIsLoading(false);
+        setError("Please enter a valid Phone Number");
+        return;
+      }
+      if (!address.length) {
+        setIsLoading(false);
+        setError("Ivalid address");
+        return;
+      }
       if (!email || er === "auth/invalid-email") {
         setIsLoading(false);
         setError("Invalid Email");

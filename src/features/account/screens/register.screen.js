@@ -27,24 +27,24 @@ export const RegisterScreen = ({ navigation }) => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const { onRegister, isLoading, error } = useContext(AuthenticationContext);
-
   return (
     <Background>
       <BgOpacity />
-      <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }} >
+      <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
         <Container>
           <AuthInput
-            label="E-mail"
-            value={email}
-            textContentType="emailAddress"
-            keyboardType="email-address"
+            label="Name"
+            value={name}
+            maxLength={20}
+            textContentType="name"
             autoCapitalize="none"
-            onChangeText={(u) => setEmail(u)}
+            onChangeText={(u) => setName(u)}
           />
           <Spacer size="large">
             <AuthInput
-              label="Contact Number"
+              label="Number"
               value={phoneNumber}
+              maxLength={10}
               textContentType="telephoneNumber"
               keyboardType="number-pad"
               autoCapitalize="none"
@@ -53,11 +53,43 @@ export const RegisterScreen = ({ navigation }) => {
           </Spacer>
           <Spacer size="large">
             <AuthInput
-              label="Name"
-              value={name}
-              textContentType="name"
+              maxLength={100}
+              style={{ height: 100 }}
+              multiline={true}
+              label="Address"
+              value={address}
+              textContentType="fullStreetAddress"
               autoCapitalize="none"
-              onChangeText={(u) => setName(u)}
+              onChangeText={(p) => setAddress(p)}
+            />
+          </Spacer>
+          {/* <Spacer size="large">
+            <AuthInput
+              label="State"
+              value={state}
+              textContentType="addressState"
+              autoCapitalize="none"
+              onChangeText={(p) => setState(p)}
+            />
+          </Spacer>
+          <Spacer size="large">
+            <AuthInput
+              label="City"
+              value={city}
+              textContentType="addressCity"
+              autoCapitalize="none"
+              onChangeText={(p) => setCity(p)}
+            />
+          </Spacer> */}
+          <Spacer size="large">
+            <AuthInput
+              label="E-mail"
+              value={email}
+              maxLength={25}
+              textContentType="emailAddress"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              onChangeText={(u) => setEmail(u)}
             />
           </Spacer>
           <Spacer size="large">
@@ -78,33 +110,6 @@ export const RegisterScreen = ({ navigation }) => {
               secureTextEntry
               autoCapitalize="none"
               onChangeText={(p) => setRepeatedPassword(p)}
-            />
-          </Spacer>
-          <Spacer size="large">
-            <AuthInput
-              label="Address"
-              value={address}
-              textContentType="fullStreetAddress"
-              autoCapitalize="none"
-              onChangeText={(p) => setAddress(p)}
-            />
-          </Spacer>
-          <Spacer size="large">
-            <AuthInput
-              label="State"
-              value={state}
-              textContentType="addressState"
-              autoCapitalize="none"
-              onChangeText={(p) => setState(p)}
-            />
-          </Spacer>
-          <Spacer size="large">
-            <AuthInput
-              label="City"
-              value={city}
-              textContentType="addressCity"
-              autoCapitalize="none"
-              onChangeText={(p) => setCity(p)}
             />
           </Spacer>
 
@@ -137,15 +142,17 @@ export const RegisterScreen = ({ navigation }) => {
               <ActivityIndicator animating={true} color={colors.ui.secondary} />
             )}
           </Spacer>
-          <Spacer size="large">
-            <AuthButton
-              icon="backspace-outline"
-              onPress={() => navigation.goBack()}
-            >
-              Back
-            </AuthButton>
-          </Spacer>
         </Container>
+
+        <View style={{ alignItems: "center" }}>
+          <AuthButton
+            style={{ width: 200, marginBottom: 80 }}
+            icon="backspace-outline"
+            onPress={() => navigation.goBack()}
+          >
+            Back
+          </AuthButton>
+        </View>
       </ScrollView>
     </Background>
   );

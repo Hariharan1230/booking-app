@@ -26,8 +26,8 @@ export const BgOpacity = styled.View`
 export const Container = styled.View`
   background-color: rgba(178, 226, 226, 0.5);
   padding: ${(props) => props.theme.space[5]};
-  margin-top: ${(props) => props.theme.space[2]};
-  margin-bottom: ${(props) => props.theme.space[6]};
+  margin-top: ${(props) => props.theme.space[3]};
+  margin-bottom: ${(props) => props.theme.space[5]};
 `;
 
 export const AuthButton = styled(Button).attrs({
