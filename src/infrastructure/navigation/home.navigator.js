@@ -4,7 +4,7 @@ import {
   TransitionPresets,
 } from "@react-navigation/stack";
 
-import { HomeScreen } from "../../features/shoplist/screens/HomeScreen";
+import { HomeScreen } from "../../features/shoplist/screens/Home.screen";
 import { ShopDetailScreen } from "../../features/shoplist/screens/shop-details.screen";
 
 const HomeStack = createStackNavigator();

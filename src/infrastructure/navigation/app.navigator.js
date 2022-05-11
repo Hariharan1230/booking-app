@@ -1,18 +1,13 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { HomeNavigator } from "./home.navigator";
-import { SafeArea } from "../../components/utility/safe-area.component";
 import { MapScreen } from "../../features/map/map.screen";
+import { ShopsContextProvider } from "../../services/shopDetails/shops.context";
+import { FavouritesContextProvider } from "../../services/favourites/favourites.context"
+import { SettingsNavigator } from "./settings.navigator";
 
-const SettingsScreen = () => (
-  <SafeArea>
-    <Text>Settings</Text>
-  </SafeArea>
-);
 
 const Tab = createBottomTabNavigator();
 
@@ -32,23 +27,25 @@ const createScreenOptions = ({ route }) => {
 };
 
 export const AppNavigator = () => (
-  <NavigationContainer>
-    <Tab.Navigator screenOptions={createScreenOptions}>
-      <Tab.Screen
-        name="Home"
-        component={HomeNavigator}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="Map"
-        component={MapScreen}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{ headerShown: false }}
-      />
-    </Tab.Navigator>
-  </NavigationContainer>
+  <FavouritesContextProvider>
+    <ShopsContextProvider>
+      <Tab.Navigator screenOptions={createScreenOptions}>
+        <Tab.Screen
+          name="Home"
+          component={HomeNavigator}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Map"
+          component={MapScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsNavigator}
+        //options={{ headerShown: false }}
+        />
+      </Tab.Navigator>
+    </ShopsContextProvider>
+  </FavouritesContextProvider>
 );
